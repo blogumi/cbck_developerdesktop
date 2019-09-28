@@ -1,0 +1,10 @@
+# Cache objects
+packer_cache/
+.vagrant
+
+# For built boxes
+*.box
+
+# Dont check in secrets
+variables/*.json
+!variables/.template.json
