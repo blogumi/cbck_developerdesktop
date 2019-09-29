@@ -18,3 +18,7 @@ In the variables folder create at least two files.
 * release.json
 
 Snapshots are development artificats. Can be built from anywhere. Releases are stable versions. 
+
+### Skunkworks Notes
+
+Ubuntu 16 filter:         "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",

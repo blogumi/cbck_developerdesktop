@@ -1,4 +1,4 @@
-- hosts: servers
+- hosts: all
   vars_files:
     - vars/main.yml
   roles:

@@ -14,15 +14,15 @@
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
-        "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+        "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
         "root-device-type": "ebs"
       },
       "owners": ["099720109477"],
       "most_recent": true
     },
-    "instance_type": "t2.micro",
+    "instance_type": "t2.xlarge",
     "ssh_username": "ubuntu",
-    "ami_name": "codeblogkc-developerdesktop-{{ user `version` }}"
+    "ami_name": "codeblogkc-gitlab-{{ user `version` }}"
   }],
   "provisioners": [
     {
@@ -35,16 +35,17 @@
       "type": "shell",
       "execute_command": "echo '{{user `ssh_pass`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
       "inline": [
-        "add-apt-repository ppa:rquillo/ansible",
+        "apt-add-repository ppa:ansible/ansible",
         "apt-get update",
-        "apt-get install -y ansible",
+        "apt-get install -y software-properties-common ansible",
         "echo '%sudo    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers"
       ]
     },
     {
       "type": "ansible-local",
       "playbook_dir": "./ansible-gitlab",
-      "playbook_file": "./ansible-gitlab/playbook.yml"
+      "playbook_file": "./ansible-gitlab/playbook.yml",
+      "command": "sudo ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 ansible-playbook"
     }
   ]
 }
