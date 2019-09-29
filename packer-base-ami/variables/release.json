@@ -1,0 +1,6 @@
+{
+  "aws_access_key": "AKIAT5AJYXGSK4DLM36A",
+  "aws_secret_key": "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",
+  "aws_region": "{{env `us-east-1`}}",
+  "version": "release-0.0.1"
+}

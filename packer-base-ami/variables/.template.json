@@ -1,5 +1,6 @@
 {
   "aws_access_key": "",
   "aws_secret_key": "",
+  "aws_region": "{{env `us-east-1`}}",
   "version": "<env>-0.0.1"
 }
